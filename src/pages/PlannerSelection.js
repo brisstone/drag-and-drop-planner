@@ -79,12 +79,12 @@ const PlannerSelection = () => {
 
   async function fetchData() {
     try {
-      // const customers = await axios.get("/api/customers")
-      // const planner = await axios.get("/api/planner")
-      // var customersJSON = customers.data
-      // var plannerJSON = planner.data
-      // setAllCustomers(()=>customersJSON) //Planner Table
-      // setPlanner(plannerJSON)   //full customers table
+      const customers = await axios.get("/api/customers")
+      const planner = await axios.get("/api/planner")
+      var customersJSON = customers.data
+      var plannerJSON = planner.data
+      setAllCustomers(()=>customersJSON) //Planner Table
+      setPlanner(plannerJSON)   //full customers table
     
     } catch (error) {
       console.error(error);
