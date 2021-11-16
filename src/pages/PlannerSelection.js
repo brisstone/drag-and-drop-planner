@@ -93,7 +93,7 @@ const PlannerSelection = () => {
   }
 
 
-  return (customersJSON &&
+  return (customersJSON? 
     <>
       <div className="container" />
 
@@ -187,7 +187,7 @@ const PlannerSelection = () => {
          
         </div>
     
-    </>
+    </> : <div style={{color: "black"}}>Api call loading</div>
   );
 };
 
