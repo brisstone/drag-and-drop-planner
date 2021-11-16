@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import '../index.css'
 
-const customersJSON = []
+const customersJSON = [{}]
 
 const PlannerSelection = () => {
 
@@ -79,12 +79,12 @@ const PlannerSelection = () => {
 
   async function fetchData() {
     try {
-      const customers = await axios.get("/api/customers")
-      const planner = await axios.get("/api/planner")
-      var customersJSON = customers.data
-      var plannerJSON = planner.data
-      setAllCustomers(()=>customersJSON) //Planner Table
-      setPlanner(plannerJSON)   //full customers table
+      // const customers = await axios.get("/api/customers")
+      // const planner = await axios.get("/api/planner")
+      // var customersJSON = customers.data
+      // var plannerJSON = planner.data
+      // setAllCustomers(()=>customersJSON) //Planner Table
+      // setPlanner(plannerJSON)   //full customers table
     
     } catch (error) {
       console.error(error);
@@ -173,9 +173,6 @@ const PlannerSelection = () => {
                     onDropCustomer={moveCustomer}
                   />
                 ))}
-                   
-
-
                   </tbody>
 
                 </table>
