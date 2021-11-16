@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "proxy": "https://drop-nodeapi.herokuapp.com/",
   "private": true,
+  "engine":{
+    "npm": "6.14.5",
+    "node": "12.18.2"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
