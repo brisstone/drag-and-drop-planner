@@ -1,13 +1,120 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+}
+
+/*
+  DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+/* ///////////////////////////////////// */
+
+.bg-warning{
+  background-color: red;
+}
+
+.bg-light{
+  background-color: violet;
+}
+
+
+
+
+.column{
+  display: flex;
+  flex-direction: row;
+  /* background-color: green; */
+  justify-content: space-between;
+  column-gap: 2rem;
+  width: max-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: auto;
+
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+.customer-name{
+  width: 120%;
+}
+
+/* th, th {
+  background-color: blueviolet;
+} */
+
+.data{
+  /* background-color: green; */
+}
+
+.data-row{
+  /* background-color: white; */
+  border: 1px solid black;
+}
+
+
+.heading{
+  color: white;
+}
+
+.title{
+  color: white;
+  font-weight: 700;
+}
+
+.container{
+
+}
+.statecheck{
+  margin: auto;
+  width: 50%;
+  /* border: 3px solid green; */
+  padding: 10px;
+}
+
+@media only screen and (max-width: 1440px){
+  html{
+font-size: 90.5% ;  /* i want 1 rem = 12px ; 10px/16px = 75% */
+  } 
+}
+
+@media only screen and (max-width: 800px){
+  html{
+font-size: 62.5% ;  /* i want 1 rem = 12px ; 10px/16px = 75% */
+  } 
 }
