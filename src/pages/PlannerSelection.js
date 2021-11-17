@@ -8,12 +8,6 @@ const customersJSON = [{}]
 
 const PlannerSelection = () => {
 
-  useEffect(() => {
-    fetchData();
-   
-  }, []);
-
-
   const [updatePlanner, setUpdateplanner] = useState([]);
   const [allCustomers, setAllCustomers] = useState([]);
   const [planner, setPlanner] = useState([]);
@@ -41,12 +35,12 @@ const PlannerSelection = () => {
 
       //get currentlydragged row data
       setUpdateplanner((_customer) => [..._customer, allCustomers[item.index]])
-      console.log(updatePlanner)
+     
      
 
 
-        await axios.post("/api/planner", {updatePlanner}).then(response=>{
-            console.log(response)
+        await axios.post("https://drop-nodeapi.herokuapp.com/api/planner", {updatePlanner}).then(response=>{
+            
             console.log(response.data)
           
 
@@ -57,21 +51,21 @@ const PlannerSelection = () => {
               
               fetchData()
               setError('successfully inserted')
-              // setError('')
+             
     
             }else if (response.data === 'failure') {
-              console.log('maddddddddddddddddd')
+              
               setError("Error inserting, please try again")
             }
         }).catch(e=>{
-            console.log(e)
+          setError(e)
         })
   
     } 
    
   };
 
-  console.log(updatePlanner)
+ 
 
   const dragHoverTableBG = isOver ? "bg-warning" : "bg-light";
   const dragHoverPlannerBG = isCustomerOver ? "bg-warning" : "bg-light";
@@ -79,33 +73,36 @@ const PlannerSelection = () => {
 
   async function fetchData() {
     try {
-      const customers = await axios.get("/api/customers")
-      const planner = await axios.get("/api/planner")
+      const customers = await axios.get("https://drop-nodeapi.herokuapp.com/api/customers")
+      const planner = await axios.get("https://drop-nodeapi.herokuapp.com/api/planner")
       var customersJSON = customers.data
       var plannerJSON = planner.data
       setAllCustomers(()=>customersJSON) //Planner Table
       setPlanner(plannerJSON)   //full customers table
     
     } catch (error) {
-      console.error(error);
+      
       setError(error)
     }
   }
 
+  useEffect(() => {
+    fetchData();
+   
+  }, []);
 
   return (customersJSON? 
-    <>
+    <div>
       <div className="container" />
-
-      
           <h2>Planner Selection (Customer Drag And Drop)</h2>
+          <h3>Drag customer row data from the left to the right, and it gets sorted automatically and placed last.
+            The date column; current date increamented by 7days is also added
+          </h3>
             <div className="statecheck">{error}</div>
-          
-          
           <div className="column">
             <div className={`${dragHoverPlannerBG}`}>
             
-              <div className="title">CUSTOMER LISTS</div>
+              <div className="title">CUSTOMERS TABLE</div>
           
               <div className="data" ref={removeFromPlannerRef}>
 
@@ -132,21 +129,16 @@ const PlannerSelection = () => {
                           onDropCustomer={moveCustomer}
                         />
                       ))}
-
-                    
-
                   </tbody>
                 </table>
-
-
 
               </div>
             </div>
             <div className={`${dragHoverTableBG}`}>
              
-                <div className="title">PLANNER</div>
+                <div className="title">PLANNER TABLE</div>
                
-           
+  
               <div className="data" ref={addToPlannerRef}>
 
                 <table>
@@ -184,7 +176,7 @@ const PlannerSelection = () => {
          
         </div>
     
-    </> : <div style={{color: "black"}}>Api call loading</div>
+    </div> : <div>loadding.....</div>
   );
 };
 
